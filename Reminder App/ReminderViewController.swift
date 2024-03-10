@@ -23,7 +23,7 @@ class ReminderViewController: UITableViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-         self.navigationItem.leftBarButtonItem = self.editButtonItem
+//         self.navigationItem.leftBarButtonItem = self.editButtonItem
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -41,7 +41,7 @@ class ReminderViewController: UITableViewController {
         
         // Extract the section name from sectionOrder array
         let sectioinKey=reminderList.sectionOrder[section]
-
+        
 
         return reminderList.listOfReminders[sectioinKey]?.count ?? 0
     }
@@ -110,6 +110,34 @@ class ReminderViewController: UITableViewController {
         return true
     }
     */
+    
+    // Delete a row by Swiping from right to left
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        // UIContextualAction - actions such as swipe actions in table view
+        let deleteAction=UIContextualAction(style: .destructive, title: "Delete"){
+            (action,view,completionHandler) in
+            
+            // logic to delete the row
+            // Extract the item associated with the given row
+            let sectionKey=self.reminderList.sectionOrder[indexPath.section]
+            let allReminders=self.reminderList.listOfReminders[sectionKey]!
+            
+            let reminderToDelete=allReminders[indexPath.row]
+            
+            // Remove the reminder from the Data Source
+            self.reminderList.removeReminder(reminder: reminderToDelete, sectionIndex: indexPath.section)
+            // Remove the row from table view with an animation
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            
+            completionHandler(true)
+        }
+        
+        // Configure UISwipeActionsConfiguration Object by passing in an array of UIContextualAction object
+        print("Delete pressed")
+        let swipeConfigurations=UISwipeActionsConfiguration(actions: [deleteAction])
+        return swipeConfigurations
+        
+    }
 
     /*
     // Override to support editing the table view.

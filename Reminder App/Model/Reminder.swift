@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Reminder{
+class Reminder:Equatable{
     var title:String
     var description:String?
     var id:String
@@ -19,6 +19,11 @@ class Reminder{
         self.description = description
         self.id = id
         self.reminderDate = reminderDate
+    }
+    
+    // overloading == operator
+    static func ==(lhs:Reminder,rhs:Reminder)->Bool{
+        return lhs.id == rhs.id
     }
     
     

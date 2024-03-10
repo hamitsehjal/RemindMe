@@ -35,6 +35,21 @@ class ReminderList{
     }
     
     /**
+     remove a reminder from the list
+     takes the following paramter
+      - reminder instance to be deleted
+      - index to find the section key since we are using dictionary as data Source
+     
+     */
+    func removeReminder(reminder:Reminder,sectionIndex:Int){
+        let sectionKey=self.sectionOrder[sectionIndex]
+        
+        if let index=listOfReminders[sectionKey]?.firstIndex(of: reminder){
+            listOfReminders[sectionKey]?.remove(at: index)
+        }
+        
+    }
+    /**
      Sort items based on their Date
      */
 //    func sortReminders(){

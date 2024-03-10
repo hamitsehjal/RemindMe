@@ -17,6 +17,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
+        
+        // Create an instance of ReminderList Class
+        let reminders=ReminderList()
+        
+        // Access the ReminderViewController and set its reminderList property
+        let navController=window!.rootViewController as! UINavigationController
+        let reminderController=navController.topViewController as! ReminderViewController
+        reminderController.reminderList=reminders
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

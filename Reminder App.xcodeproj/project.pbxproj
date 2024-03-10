@@ -9,13 +9,16 @@
 /* Begin PBXBuildFile section */
 		3A6515782B9A6FEF00BCD9E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6515772B9A6FEF00BCD9E9 /* AppDelegate.swift */; };
 		3A65157A2B9A6FEF00BCD9E9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6515792B9A6FEF00BCD9E9 /* SceneDelegate.swift */; };
-		3A65157C2B9A6FEF00BCD9E9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A65157B2B9A6FEF00BCD9E9 /* ViewController.swift */; };
 		3A65157F2B9A6FEF00BCD9E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A65157D2B9A6FEF00BCD9E9 /* Main.storyboard */; };
 		3A6515812B9A6FF000BCD9E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A6515802B9A6FF000BCD9E9 /* Assets.xcassets */; };
 		3A6515842B9A6FF000BCD9E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A6515822B9A6FF000BCD9E9 /* LaunchScreen.storyboard */; };
 		3A65158F2B9A6FF000BCD9E9 /* Reminder_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A65158E2B9A6FF000BCD9E9 /* Reminder_AppTests.swift */; };
 		3A6515992B9A6FF000BCD9E9 /* Reminder_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6515982B9A6FF000BCD9E9 /* Reminder_AppUITests.swift */; };
 		3A65159B2B9A6FF000BCD9E9 /* Reminder_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A65159A2B9A6FF000BCD9E9 /* Reminder_AppUITestsLaunchTests.swift */; };
+		3A6515A82B9A70DE00BCD9E9 /* ReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6515A72B9A70DE00BCD9E9 /* ReminderViewController.swift */; };
+		3A6515AA2B9A7E8400BCD9E9 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6515A92B9A7E8400BCD9E9 /* DetailViewController.swift */; };
+		3A6515AD2B9A7EFF00BCD9E9 /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6515AC2B9A7EFF00BCD9E9 /* Reminder.swift */; };
+		3A6515AF2B9A801A00BCD9E9 /* ReminderList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6515AE2B9A801A00BCD9E9 /* ReminderList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +42,6 @@
 		3A6515742B9A6FEF00BCD9E9 /* Reminder App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Reminder App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A6515772B9A6FEF00BCD9E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A6515792B9A6FEF00BCD9E9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		3A65157B2B9A6FEF00BCD9E9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3A65157E2B9A6FEF00BCD9E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3A6515802B9A6FF000BCD9E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A6515832B9A6FF000BCD9E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +51,10 @@
 		3A6515942B9A6FF000BCD9E9 /* Reminder AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Reminder AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A6515982B9A6FF000BCD9E9 /* Reminder_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminder_AppUITests.swift; sourceTree = "<group>"; };
 		3A65159A2B9A6FF000BCD9E9 /* Reminder_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminder_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		3A6515A72B9A70DE00BCD9E9 /* ReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderViewController.swift; sourceTree = "<group>"; };
+		3A6515A92B9A7E8400BCD9E9 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		3A6515AC2B9A7EFF00BCD9E9 /* Reminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminder.swift; sourceTree = "<group>"; };
+		3A6515AE2B9A801A00BCD9E9 /* ReminderList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,10 +105,12 @@
 		3A6515762B9A6FEF00BCD9E9 /* Reminder App */ = {
 			isa = PBXGroup;
 			children = (
+				3A6515AB2B9A7EE400BCD9E9 /* Model */,
 				3A6515772B9A6FEF00BCD9E9 /* AppDelegate.swift */,
 				3A6515792B9A6FEF00BCD9E9 /* SceneDelegate.swift */,
-				3A65157B2B9A6FEF00BCD9E9 /* ViewController.swift */,
 				3A65157D2B9A6FEF00BCD9E9 /* Main.storyboard */,
+				3A6515A92B9A7E8400BCD9E9 /* DetailViewController.swift */,
+				3A6515A72B9A70DE00BCD9E9 /* ReminderViewController.swift */,
 				3A6515802B9A6FF000BCD9E9 /* Assets.xcassets */,
 				3A6515822B9A6FF000BCD9E9 /* LaunchScreen.storyboard */,
 				3A6515852B9A6FF000BCD9E9 /* Info.plist */,
@@ -125,6 +133,15 @@
 				3A65159A2B9A6FF000BCD9E9 /* Reminder_AppUITestsLaunchTests.swift */,
 			);
 			path = "Reminder AppUITests";
+			sourceTree = "<group>";
+		};
+		3A6515AB2B9A7EE400BCD9E9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3A6515AC2B9A7EFF00BCD9E9 /* Reminder.swift */,
+				3A6515AE2B9A801A00BCD9E9 /* ReminderList.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,7 +275,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A65157C2B9A6FEF00BCD9E9 /* ViewController.swift in Sources */,
+				3A6515A82B9A70DE00BCD9E9 /* ReminderViewController.swift in Sources */,
+				3A6515AF2B9A801A00BCD9E9 /* ReminderList.swift in Sources */,
+				3A6515AA2B9A7E8400BCD9E9 /* DetailViewController.swift in Sources */,
+				3A6515AD2B9A7EFF00BCD9E9 /* Reminder.swift in Sources */,
 				3A6515782B9A6FEF00BCD9E9 /* AppDelegate.swift in Sources */,
 				3A65157A2B9A6FEF00BCD9E9 /* SceneDelegate.swift in Sources */,
 			);

@@ -80,13 +80,13 @@ class DetailViewController: UIViewController {
         
         // Check if the reminder already exists in the list
         // If it doesn't, create a new instance of the reminder and add it to the lis
-        if let list=reminderList{
-            if !list.listOfReminders.contains(where: {element in return element.id == reminder.id}){
-                // Add the reminder to the collection
-                reminderList?.addReminder(reminder: reminder)
-                print("Added New item")
-            }
-        }
+//        if let list=reminderList{
+//            if !list.listOfReminders.contains(where: {element in return element.id == reminder.id}){
+//                // Add the reminder to the collection
+//                reminderList?.addReminder(reminder: reminder)
+//                print("Added New item")
+//            }
+//        }
         
 //        navigationController?.popViewController(animated: true)
         

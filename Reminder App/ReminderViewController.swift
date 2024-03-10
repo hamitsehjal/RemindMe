@@ -28,31 +28,43 @@ class ReminderViewController: UITableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        reminderList.sortReminders()
+//        reminderList.sortReminders()
     }
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return reminderList.listOfReminders.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return reminderList.listOfReminders.count
+        
+        // Extract the section name from sectionOrder array
+        let sectioinKey=reminderList.sectionOrder[section]
+
+
+        return reminderList.listOfReminders[sectioinKey]?.count ?? 0
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath)
 
-        // Extract the reminder from the list
-        let reminder=reminderList.listOfReminders[indexPath.row]
+
+        // Extract the section Key from sectionOrder using indexPath.section
+        let sectionKey=reminderList.sectionOrder[indexPath.section]
+        
+        // extract the section items from reminder's list using sectionKey
+        let sectionReminders=reminderList.listOfReminders[sectionKey]!
+        
+        let reminder=sectionReminders[indexPath.row]
+       
         cell.accessoryType = .disclosureIndicator
         cell.textLabel?.text="\(reminder.title)"
         let formattedDate=dateFormatter.string(from: reminder.reminderDate)
         cell.detailTextLabel?.text=formattedDate
 
+        
         return cell
     }
     
@@ -95,7 +107,7 @@ class ReminderViewController: UITableViewController {
     @IBAction func myUnwindAction(unwindSegue:UIStoryboardSegue){
         print("Unwind Segue to ReminderViewController")
         print("Reloading table date in ReminderViewController")
-        reminderList.sortReminders()
+//        reminderList.sortReminders()
         tableView.reloadData()
     }
     // MARK: - Navigation
@@ -104,30 +116,30 @@ class ReminderViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-        switch segue.identifier{
-        case "showReminder":
-            // Figure out which row was tapped
-            if let row=tableView.indexPathForSelectedRow?.row{
-                // Get the item associated with the row
-                let reminder=reminderList.listOfReminders[row]
-                let navController=segue.destination as! UINavigationController
-                let detailController=navController.topViewController as! DetailViewController
-                detailController.reminder=reminder
-            }
-        case "addReminder":
-            // Create a new instance of Reminder object
-            
-            // Generate a random uuid and convert it to string
-            let randomId=UUID().uuidString.components(separatedBy: "-").first!
-
-            let newReminder=Reminder(title: "Submit Assignment", description: "iOS Development Midterm Due", id: randomId, reminderDate: Date())
-            let navController=segue.destination as! UINavigationController
-            let detailController=navController.topViewController as! DetailViewController
-            detailController.reminder=newReminder
-            detailController.reminderList=reminderList
-            
-        default: preconditionFailure("Unexpected Segue Failure")
-        }
+//        switch segue.identifier{
+//        case "showReminder":
+//            // Figure out which row was tapped
+//            if let row=tableView.indexPathForSelectedRow?.row{
+//                // Get the item associated with the row
+//                let reminder=reminderList.listOfReminders[row]
+//                let navController=segue.destination as! UINavigationController
+//                let detailController=navController.topViewController as! DetailViewController
+//                detailController.reminder=reminder
+//            }
+//        case "addReminder":
+//            // Create a new instance of Reminder object
+//            
+//            // Generate a random uuid and convert it to string
+//            let randomId=UUID().uuidString.components(separatedBy: "-").first!
+//
+//            let newReminder=Reminder(title: "Submit Assignment", description: "iOS Development Midterm Due", id: randomId, reminderDate: Date())
+//            let navController=segue.destination as! UINavigationController
+//            let detailController=navController.topViewController as! DetailViewController
+//            detailController.reminder=newReminder
+//            detailController.reminderList=reminderList
+//            
+//        default: preconditionFailure("Unexpected Segue Failure")
+//        }
     }
     
 

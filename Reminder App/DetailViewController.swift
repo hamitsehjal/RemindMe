@@ -78,20 +78,40 @@ class DetailViewController: UIViewController {
         reminder.description=descTextView.text
         reminder.reminderDate=datePickerView.date
         
-        // Check if the reminder already exists in the list
-        // If it doesn't, create a new instance of the reminder and add it to the lis
-//        if let list=reminderList{
-//            if !list.listOfReminders.contains(where: {element in return element.id == reminder.id}){
-//                // Add the reminder to the collection
-//                reminderList?.addReminder(reminder: reminder)
-//                print("Added New item")
-//            }
-//        }
         
-//        navigationController?.popViewController(animated: true)
+        // Check if the reminder already exists in the any of the existing reminders
+        // If it doesn't, create a new instance of the reminder and add it to the list
+        var doesExist=false
+
+        if let list=reminderList{
+            // list is a dictionary mapping remainder category to an array of Reminders in that section
+            for sectionKey in list.sectionOrder{
+                if let sectionReminders=list.listOfReminders[sectionKey]{
+                    // if there are any reminders in this section, set doesExist to true
+                    if sectionReminders.contains(where: {element in return element.id == reminder.id}){
+                        
+                        doesExist=true
+                        break
+                    }
+                }
+                
+            }
+            if doesExist==false{
+                // new reminder, add it to the list
+                
+                reminderList?.addReminder(reminder: reminder)
+                print("New Reminder Added")
+                
+            }
+
+        }
+        
+
         
         performSegue(withIdentifier: "unwindSegueSave", sender: self)
     }
+    
+   
     @IBAction func handleDateChanged(_ sender: UIDatePicker) {
         
         dateSelectedByUser=sender.date

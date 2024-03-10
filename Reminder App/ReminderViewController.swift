@@ -13,7 +13,12 @@ class ReminderViewController: UITableViewController {
     // helper function to format date
     let dateFormatter:DateFormatter={
         let formatter=DateFormatter()
-        formatter.dateFormat="MMMM d, yyyy 'at' h:mm a"
+        // h - Hour in 12 hour format
+        // mm - minutes with leading zeros
+        // ss - seconds with leading zeros
+        // a - am/pm marker
+        // zzz - time zone abbreviation
+        formatter.dateFormat="h:mm:ss a zzz"
         return formatter
     }()
     override func viewDidLoad() {
@@ -28,7 +33,7 @@ class ReminderViewController: UITableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        reminderList.sortReminders()
+        reminderList.sortReminders()
     }
     // MARK: - Table view data source
 
@@ -81,6 +86,8 @@ class ReminderViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 40.0
     }
+    
+    // Content for each cell
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath)
 
@@ -103,13 +110,6 @@ class ReminderViewController: UITableViewController {
     }
     
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
     
     // Delete a row by Swiping from right to left
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -139,37 +139,12 @@ class ReminderViewController: UITableViewController {
         
     }
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
+    
 
     @IBAction func myUnwindAction(unwindSegue:UIStoryboardSegue){
         print("Unwind Segue to ReminderViewController")
         print("Reloading table date in ReminderViewController")
-//        reminderList.sortReminders()
+        reminderList.sortReminders()
         tableView.reloadData()
     }
     // MARK: - Navigation
@@ -178,30 +153,35 @@ class ReminderViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-//        switch segue.identifier{
-//        case "showReminder":
-//            // Figure out which row was tapped
-//            if let row=tableView.indexPathForSelectedRow?.row{
-//                // Get the item associated with the row
-//                let reminder=reminderList.listOfReminders[row]
-//                let navController=segue.destination as! UINavigationController
-//                let detailController=navController.topViewController as! DetailViewController
-//                detailController.reminder=reminder
-//            }
-//        case "addReminder":
-//            // Create a new instance of Reminder object
-//            
-//            // Generate a random uuid and convert it to string
-//            let randomId=UUID().uuidString.components(separatedBy: "-").first!
-//
-//            let newReminder=Reminder(title: "Submit Assignment", description: "iOS Development Midterm Due", id: randomId, reminderDate: Date())
-//            let navController=segue.destination as! UINavigationController
-//            let detailController=navController.topViewController as! DetailViewController
-//            detailController.reminder=newReminder
-//            detailController.reminderList=reminderList
-//            
-//        default: preconditionFailure("Unexpected Segue Failure")
-//        }
+        switch segue.identifier{
+        case "showReminder":
+            // Figure out which section-row was tapped
+            if let indexPath=tableView.indexPathForSelectedRow{
+                // Get the item associated with the row
+
+                let sectionNumber=indexPath.section
+                let rowNumber=indexPath.row
+                let sectionKey=reminderList.sectionOrder[sectionNumber]
+                let allReminders=reminderList.listOfReminders[sectionKey]!
+                let reminder=allReminders[rowNumber]
+                let navController=segue.destination as! UINavigationController
+                let detailController=navController.topViewController as! DetailViewController
+                detailController.reminder=reminder
+            }
+        case "addReminder":
+            // Create a new instance of Reminder object
+            
+            // Generate a random uuid and convert it to string
+            let randomId=UUID().uuidString.components(separatedBy: "-").first!
+
+            let newReminder=Reminder(title: "iOS Midterm", description: "iOS Development Midterm Due Monday 11th March", id: randomId, reminderDate: Date())
+            let navController=segue.destination as! UINavigationController
+            let detailController=navController.topViewController as! DetailViewController
+            detailController.reminder=newReminder
+            detailController.reminderList=reminderList
+            
+        default: preconditionFailure("Unexpected Segue Failure")
+        }
     }
     
 

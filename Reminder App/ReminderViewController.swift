@@ -23,7 +23,7 @@ class ReminderViewController: UITableViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+         self.navigationItem.leftBarButtonItem = self.editButtonItem
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -45,8 +45,42 @@ class ReminderViewController: UITableViewController {
 
         return reminderList.listOfReminders[sectioinKey]?.count ?? 0
     }
-
     
+//     customize the title view for each section's header
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let headerViewHeight:CGFloat=40
+        let headerViewWidth:CGFloat=tableView.bounds.width // same a tableview
+        let padding:CGFloat=10
+        // Create an UIView instance
+        let headerView=UIView(frame: CGRect(x: 0, y: 0, width: headerViewWidth, height: headerViewHeight))
+        
+        // set the background to light text
+        headerView.backgroundColor = .lightText
+        
+        // Create a label instance with appropriate padding relative to HeaderView
+        let titleLabel=UILabel(frame: CGRect(x: 10, y: 0, width: headerViewWidth-2*padding, height: headerViewHeight-2*padding))
+        
+        // set the label's font style and size
+        titleLabel.font=UIFont(name: "Kohinoor Bangla", size: 16)
+        
+        // set the labe's font color
+        titleLabel.textColor = .black
+        
+        // Extract the section title
+        let sectionTitle=reminderList.sectionOrder[section].capitalized
+        titleLabel.text=sectionTitle.uppercased()
+        
+        // add the title label(UILabel) to header view (UIView)
+        headerView.addSubview(titleLabel)
+
+        return headerView
+    }
+    
+    // height for each section's footer
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 40.0
+    }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath)
 

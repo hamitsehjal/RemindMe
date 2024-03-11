@@ -19,6 +19,7 @@
 		3A6515AA2B9A7E8400BCD9E9 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6515A92B9A7E8400BCD9E9 /* DetailViewController.swift */; };
 		3A6515AD2B9A7EFF00BCD9E9 /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6515AC2B9A7EFF00BCD9E9 /* Reminder.swift */; };
 		3A6515AF2B9A801A00BCD9E9 /* ReminderList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6515AE2B9A801A00BCD9E9 /* ReminderList.swift */; };
+		3AC3C9672B9F7A1F00E2A225 /* ReminderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC3C9662B9F7A1F00E2A225 /* ReminderCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		3A6515A92B9A7E8400BCD9E9 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		3A6515AC2B9A7EFF00BCD9E9 /* Reminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminder.swift; sourceTree = "<group>"; };
 		3A6515AE2B9A801A00BCD9E9 /* ReminderList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderList.swift; sourceTree = "<group>"; };
+		3AC3C9662B9F7A1F00E2A225 /* ReminderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 		3A65156B2B9A6FEF00BCD9E9 = {
 			isa = PBXGroup;
 			children = (
+				3AC3C9662B9F7A1F00E2A225 /* ReminderCell.swift */,
 				3A6515762B9A6FEF00BCD9E9 /* Reminder App */,
 				3A65158D2B9A6FF000BCD9E9 /* Reminder AppTests */,
 				3A6515972B9A6FF000BCD9E9 /* Reminder AppUITests */,
@@ -278,6 +281,7 @@
 				3A6515A82B9A70DE00BCD9E9 /* ReminderViewController.swift in Sources */,
 				3A6515AF2B9A801A00BCD9E9 /* ReminderList.swift in Sources */,
 				3A6515AA2B9A7E8400BCD9E9 /* DetailViewController.swift in Sources */,
+				3AC3C9672B9F7A1F00E2A225 /* ReminderCell.swift in Sources */,
 				3A6515AD2B9A7EFF00BCD9E9 /* Reminder.swift in Sources */,
 				3A6515782B9A6FEF00BCD9E9 /* AppDelegate.swift in Sources */,
 				3A65157A2B9A6FEF00BCD9E9 /* SceneDelegate.swift in Sources */,

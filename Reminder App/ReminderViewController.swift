@@ -28,7 +28,11 @@ class ReminderViewController: UITableViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-//         self.navigationItem.leftBarButtonItem = self.editButtonItem
+        
+        // setting the cell height to be dynamic
+        tableView.rowHeight=UITableView.automaticDimension
+        tableView.estimatedRowHeight=80
+
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -89,7 +93,7 @@ class ReminderViewController: UITableViewController {
     
     // Content for each cell
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ReminderCell", for: indexPath) as! ReminderCell
 
 
         // Extract the section Key from sectionOrder using indexPath.section
@@ -100,10 +104,17 @@ class ReminderViewController: UITableViewController {
         
         let reminder=sectionReminders[indexPath.row]
        
-        cell.accessoryType = .disclosureIndicator
-        cell.textLabel?.text="\(reminder.title)"
+        // check if the reminder'date is less than current date
+        if reminder.reminderDate.compare(Date()) == .orderedAscending{
+            // reminder's date is less than current date
+            cell.contentView.backgroundColor=UIColor.lightGray
+        }
+        else{
+            cell.contentView.backgroundColor=UIColor.white
+        }
+        cell.reminderTitleLabel?.text="\(reminder.title)"
         let formattedDate=dateFormatter.string(from: reminder.reminderDate)
-        cell.detailTextLabel?.text=formattedDate
+        cell.reminderDateLabel?.text=formattedDate
 
         
         return cell
